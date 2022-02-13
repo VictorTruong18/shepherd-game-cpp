@@ -15,12 +15,12 @@ SDL_Surface* load_surface_for(const std::string& path,
 }
 } // namespace game
 
-Animal::Animal(const std::string& file_path, SDL_Surface* window_surface_ptr) {
+Animal::Animal(const std::string& file_path, SDL_Surface* window_surface_ptr, double speed) 
+: MovingObject(speed){
 
   // InitialiZe the window_surface_ptr_ in the class
   this->window_surface_ptr_ = window_surface_ptr;
-  this->direction_x = this->arr[rand() % 2];
-  this->direction_y = this->arr[rand() % 2];
+  
 
   // Load the texture of the animal
   this->image_ptr_ = game::load_surface_for(file_path, this->image_ptr_);
@@ -66,22 +66,22 @@ void Animal::move() {
   int max_width = frame_width - frame_boundary - this->image_ptr_->w;
 
   if (this->image_position.x <= frame_boundary) {
-    this->direction_x = -this->direction_x;
+    this->veloxity_x = -this->veloxity_x;
     this->image_position.x = frame_boundary;
   }
   if (this->image_position.x >= max_width) {
-    this->direction_x = -this->direction_x;
+    this->veloxity_x = -this->veloxity_x;
     this->image_position.x = max_width;
   }
   if (this->image_position.y <= frame_boundary) {
-    this->direction_y = -this->direction_y;
+    this->veloxity_y = -this->veloxity_y;
     this->image_position.y = frame_boundary;
   }
 
   if (this->image_position.y >= max_height) {
-    this->direction_y = -this->direction_y;
+    this->veloxity_y = -this->veloxity_y;
     this->image_position.y = max_height;
   }
-  this->image_position.x += this->direction_x * this->speed;
-  this->image_position.y += this->direction_y * this->speed;
+  this->image_position.x += this->veloxity_x * this->speed;
+  this->image_position.y += this->veloxity_y * this->speed;
 }
