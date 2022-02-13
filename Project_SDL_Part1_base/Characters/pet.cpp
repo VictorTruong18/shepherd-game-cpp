@@ -13,6 +13,6 @@ void Pet::move(SDL_Rect shepherdPosition){
   } else {
     this->angle = 0;
   }
-  this->image_position.x = shepherdPosition.x + cos(this->angle)*100;
-  this->image_position.y = shepherdPosition.y + sin(this->angle)*100;
+  this->image_position_.x = shepherdPosition.x + cos(this->angle)*100;
+  this->image_position_.y = shepherdPosition.y + sin(this->angle)*100;
 }
