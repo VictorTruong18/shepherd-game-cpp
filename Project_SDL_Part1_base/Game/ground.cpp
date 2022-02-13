@@ -17,10 +17,7 @@ void ground::add_animal(std::unique_ptr<Animal> animal) {
   this->animals.push_back(std::move(animal));
 }
 
-void ground::add_playable_character(
-    std::unique_ptr<PlayableCharacter> PlayableCharacter) {
-  this->playableCharacters.push_back(std::move(PlayableCharacter));
-}
+
 
 void ground::update() {
   // The ground gets repainted

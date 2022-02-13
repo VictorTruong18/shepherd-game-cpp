@@ -27,11 +27,12 @@ private:
   std::vector<std::unique_ptr<Animal>> animals;
 
 
+
 public:
   ground(SDL_Surface* window_surface_ptr); // todo: Ctor
   ~ground(); // todo: Dtor, again for clean up (if necessary)
   void add_animal(std::unique_ptr<Animal> animal); // todo: Add an animal
-
+  
   void update(); // todo: "refresh the screen": Move animals and draw them
                  // Possibly other methods, depends on your implementation
 };
