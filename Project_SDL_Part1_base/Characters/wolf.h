@@ -11,5 +11,5 @@ public:
   Wolf(SDL_Surface* window_surface_ptr_);
   // Dtor
   ~Wolf();
-  void interract() override;
+  void interract(InterractingObject& interractingObject,const SDL_Rect&  interractingObjectPosition) override;
 };

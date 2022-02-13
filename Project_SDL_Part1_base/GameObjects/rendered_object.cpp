@@ -47,13 +47,19 @@ RenderedObject::~RenderedObject() {
 }
 
 void RenderedObject::draw() {
-  // Put the animal's image surface on the window surface
-  SDL_Rect crop, positionFond;
-  crop.x = 0;
-  crop.y = 0;
-  crop.h = this->image_ptr_->h;
-  crop.w = this->image_ptr_->w;
+  if(this->has_attribute("Alive")){
+    // Put the animal's image surface on the window surface
+    SDL_Rect crop, positionFond;
+    crop.x = 0;
+    crop.y = 0;
+    crop.h = this->image_ptr_->h;
+    crop.w = this->image_ptr_->w;
 
-  SDL_BlitSurface(this->image_ptr_, &crop, this->window_surface_ptr_,
-                  &image_position_);
+    SDL_BlitSurface(this->image_ptr_, &crop, this->window_surface_ptr_,
+                    &image_position_);
+  }
+}
+
+SDL_Rect RenderedObject::get_position(){
+  return this->image_position_;
 }

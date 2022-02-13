@@ -27,6 +27,12 @@ void ground::update() {
   for (auto& a : this->animals) {
     a->draw();
     a->move();
-    a->interract();
+    for (auto& b : this->animals) {
+
+      if (a.get() == b.get())
+        continue;
+        
+      a->interract(*b,b->get_position());
+    }
   }
 }

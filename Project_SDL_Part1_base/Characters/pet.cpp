@@ -1,7 +1,7 @@
 #include "pet.h"
 
 Pet::Pet(SDL_Surface* window_surface_ptr_, std::string picture_path)
-    : Animal(picture_path, window_surface_ptr_,1, std::set<std::string> { "Dog"}) {
+    : Animal(picture_path, window_surface_ptr_,1, std::set<std::string> { "Dog", "Alive"}) {
   this->speed = 1;
 }
 

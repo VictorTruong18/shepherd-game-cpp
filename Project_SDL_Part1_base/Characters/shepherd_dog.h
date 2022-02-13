@@ -17,5 +17,5 @@ public:
   ~ShepherdDog();
   // implement functions that are purely virtual in base class
 
-  void interract() override;
+  void interract(InterractingObject& interractingObject,const SDL_Rect&  interractingObjectPosition) override;
 };
