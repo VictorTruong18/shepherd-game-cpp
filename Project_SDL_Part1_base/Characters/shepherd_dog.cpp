@@ -6,3 +6,5 @@ ShepherdDog::ShepherdDog(SDL_Surface* window_surface_ptr_)
 }
 
 ShepherdDog::~ShepherdDog() {}
+
+void ShepherdDog::interract(){}

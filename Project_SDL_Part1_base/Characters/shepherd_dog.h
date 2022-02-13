@@ -16,4 +16,6 @@ public:
    */
   ~ShepherdDog();
   // implement functions that are purely virtual in base class
+
+  void interract() override;
 };

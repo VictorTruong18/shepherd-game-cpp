@@ -8,3 +8,7 @@ Sheep::Sheep(SDL_Surface* window_surface_ptr_)
 
 Sheep::~Sheep() {}
 
+void Sheep::interract(){
+
+}
+

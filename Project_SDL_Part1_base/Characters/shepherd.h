@@ -8,5 +8,5 @@ public:
   Shepherd(SDL_Surface* window_surface_ptr);
   ~Shepherd();
 
-
+    void interract() override;
 };

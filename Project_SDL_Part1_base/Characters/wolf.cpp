@@ -6,3 +6,7 @@ Wolf::Wolf(SDL_Surface* window_surface_ptr_)
 }
 
 Wolf::~Wolf() {}
+
+void Wolf::interract(){
+
+}

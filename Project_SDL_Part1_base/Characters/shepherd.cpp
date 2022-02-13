@@ -5,3 +5,5 @@ Shepherd::Shepherd(SDL_Surface* window_surface_ptr_)
 
 
 Shepherd::~Shepherd() {}
+
+void Shepherd::interract(){}

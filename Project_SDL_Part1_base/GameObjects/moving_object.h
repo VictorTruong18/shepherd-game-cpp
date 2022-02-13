@@ -15,4 +15,5 @@ public:
                 std::set<std::string> properties);
   ~MovingObject();
   virtual void move() = 0;
+  
 };
