@@ -27,5 +27,6 @@ void ground::update() {
   for (auto& a : this->animals) {
     a->draw();
     a->move();
+    a->interract();
   }
 }
