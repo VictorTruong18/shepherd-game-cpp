@@ -7,6 +7,7 @@
 #include <memory>
 #include <optional>
 #include <vector>
+#include <set>
 
 // Defintions
 const double frame_rate = 60.0; // refresh rate

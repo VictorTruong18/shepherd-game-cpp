@@ -15,7 +15,8 @@ SDL_Surface* load_surface_for(const std::string& path,
 }
 } // namespace game
 
-RenderedObject::RenderedObject(const std::string& file_path,SDL_Surface* window_surface_ptr){
+RenderedObject::RenderedObject(const std::string& file_path,SDL_Surface* window_surface_ptr,std::set<std::string> properties) : 
+    InterractingObject(properties){
    // InitialiZe the window_surface_ptr_ in the class
   this->window_surface_ptr_ = window_surface_ptr;
   // Load the texture of the animal

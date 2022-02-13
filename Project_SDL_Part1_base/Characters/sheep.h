@@ -16,4 +16,5 @@ public:
    */
   ~Sheep();
   // implement functions that are purely virtual in base class
+
 };
