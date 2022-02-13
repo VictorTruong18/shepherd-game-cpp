@@ -1,45 +1,11 @@
 #include "playable_character.h"
 
-namespace image {
-// Defining a namespace without a name -> Anonymous workspace
-// Its purpose is to indicate to the compiler that everything
-// inside of it is UNIQUELY used within this source file.
-
-SDL_Surface* load_surface_for(const std::string& path,
-                              SDL_Surface* window_surface_ptr) {
-
-  // Helper function to load a png for a specific surface
-  // See SDL_ConvertSurface
-  window_surface_ptr = IMG_Load(path.c_str());
-  return window_surface_ptr;
-}
-} // namespace image
-
 PlayableCharacter::~PlayableCharacter() {}
 
 PlayableCharacter::PlayableCharacter(const std::string& file_path,
-                                     SDL_Surface* window_surface_ptr) {
-  // InitialiZe the window_surface_ptr_ in the class
-  this->window_surface_ptr_ = window_surface_ptr;
-  this->image_ptr_ = image::load_surface_for(file_path, this->image_ptr_);
-  if (!this->image_ptr_)
-    throw std::runtime_error("Could not load image");
+                                     SDL_Surface* window_surface_ptr,double speed, std::set<std::string> properties) 
+: MovingObject(file_path,window_surface_ptr,speed,properties){
 
-  // Give the animal an intial postion
-  // in the range of 0 to the frame_width
-  this->image_position.x =
-      rand() % (frame_width - frame_boundary - this->image_ptr_->w) +
-      frame_boundary;
-
-  // in the range of 0 to the frame_height
-  this->image_position.y =
-      rand() % (frame_height - frame_boundary - this->image_ptr_->h) +
-      frame_boundary;
-  // Give the size of the rectangle
-  // the width of the rectangle will be the same as width of the image
-  this->image_position.w = this->image_ptr_->w;
-  // the height of the rectangle will be the same as height of the image
-  this->image_position.h = this->image_ptr_->h;
 }
 
 void PlayableCharacter::handle_events(SDL_Event const& event) {
@@ -68,50 +34,47 @@ void PlayableCharacter::move() {
   int max_width = frame_width - frame_boundary - this->image_ptr_->w;
   switch (image_direction) {
   case Direction::NONE:
-    direction_x += 0.0;
-    direction_y += 0.0;
+    this->veloxity_x += 0.0;
+    this->veloxity_y += 0.0;
     break;
   case Direction::UP:
-    if (image_position.y >= frame_boundary) {
-      direction_y -= 1;
+    if (this->image_position_.y >= frame_boundary) {
+      this->veloxity_y -= 1;
     } else {
-      direction_x += 0.0;
-      direction_y += 0.0;
+      this->veloxity_x += 0.0;
+      this->veloxity_y += 0.0;
     }
     break;
   case Direction::DOWN:
-    if (image_position.y <= max_height) {
-      direction_y += 1;
+    if (this->image_position_.y <= max_height) {
+      this->veloxity_y += 1;
     } else {
-      direction_x += 0.0;
-      direction_y += 0.0;
+      this->veloxity_x += 0.0;
+      this->veloxity_y += 0.0;
     }
     break;
   case Direction::LEFT:
-    if (image_position.x >= frame_boundary) {
-      direction_x -= 1;
+    if (this->image_position_.x >= frame_boundary) {
+      this->veloxity_x -= 1;
     } else {
-      direction_x += 0.0;
-      direction_y += 0.0;
+      this->veloxity_x += 0.0;
+      this->veloxity_y += 0.0;
     }
     break;
   case Direction::RIGHT:
-    if (image_position.x <= max_width) {
-      direction_x += 1;
+    if (this->image_position_.x <= max_width) {
+      this->veloxity_x += 1;
     } else {
-      direction_x += 0.0;
-      direction_y += 0.0;
+      this->veloxity_x += 0.0;
+      this->veloxity_y += 0.0;
     }
     break;
   }
 
-  image_position.x = direction_x * speed;
-  image_position.y = direction_y * speed;
+  this->image_position_.x = this->veloxity_x * this->speed;
+  this->image_position_.y = this->veloxity_y * this->speed;
 }
 
-void PlayableCharacter::draw() {
-  SDL_BlitSurface(image_ptr_, nullptr, window_surface_ptr_, &image_position);
-}
 
 void PlayableCharacter::stop() { image_direction = Direction::NONE; }
 
@@ -120,6 +83,6 @@ void PlayableCharacter::addPet(std::unique_ptr<Pet> pet){
 }
 
 void PlayableCharacter::petUpdate() {
-  this->pet->move(this->image_position);
+  this->pet->move(this->image_position_);
   this->pet->draw();
 }
