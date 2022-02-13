@@ -1,0 +1,44 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+
+# Media
+*.mp4
+
+# build !
+Project_SDL_Part1_base/SDL_part1
+Project_SDL_Part1_base/CMakeCache.txt
+Project_SDL_Part1_base/CMakeFiles/*
+Project_SDL_Part1_base/Makefile
+Project_SDL_Part1_base/cmake_install.cmake
+.vscode
