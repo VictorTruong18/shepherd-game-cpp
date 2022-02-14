@@ -29,6 +29,19 @@ void Wolf::interract(InterractingObject& interractingObject,const SDL_Rect&  int
        this->image_position_.y -= 1;
      }
    }
+    //Guard animal on sight
+   if(interractingObject.has_attribute("Guard") && this->has_attribute("Alive") && interractingObject.has_attribute("Alive")){
+     if(this->image_position_.x < interractingObjectPosition.x){
+       this->image_position_.x -= 20;
+     } else {
+       this->image_position_.x += 20;
+     }
+     if(this->image_position_.y < interractingObjectPosition.y){
+       this->image_position_.y -= 20;
+     } else {
+       this->image_position_.y += 20;
+     }
+   }
  }
 }
 
