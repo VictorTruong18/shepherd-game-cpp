@@ -79,12 +79,40 @@ void Sheep::update_status(){
   if(this->has_attribute("Alive") && this->has_attribute("Boost") && !(this->has_attribute("Offspring") || this->has_attribute("Lamb"))){
       if(this->timeBoost < TIME_BOOST_SHEEP){
         this->timeBoost++;
-        this->speed = 3;
+        this->speed = 5;
         this->modify_picture(IMG_SHEEP_SCARED);
       } else {
         this->delete_attribute("Boost");
         this->speed = 1;
       }
       
+  }
+}
+
+
+void Sheep::move() {
+  if(this->has_attribute("Alive")){
+    int max_height = frame_height - frame_boundary - this->image_ptr_->h;
+    int max_width = frame_width - frame_boundary - this->image_ptr_->w;
+
+    if (this->image_position_.x <= frame_boundary) {
+      this->veloxity_x = -this->veloxity_x;
+      this->image_position_.x = frame_boundary;
+    }
+    if (this->image_position_.x >= max_width) {
+      this->veloxity_x = -this->veloxity_x;
+      this->image_position_.x = max_width;
+    }
+    if (this->image_position_.y <= frame_boundary) {
+      this->veloxity_y = -this->veloxity_y;
+      this->image_position_.y = frame_boundary;
+    }
+
+    if (this->image_position_.y >= max_height) {
+      this->veloxity_y = -this->veloxity_y;
+      this->image_position_.y = max_height;
+    }
+    this->image_position_.x += this->veloxity_x * this->speed;
+    this->image_position_.y += this->veloxity_y * this->speed;
   }
 }

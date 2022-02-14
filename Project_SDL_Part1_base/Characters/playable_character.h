@@ -14,8 +14,7 @@ public:
   void handle_events(SDL_Event const& event) override;
   void move() override;
   void stop();
-  void petUpdate();
-  void addPet(std::unique_ptr<Pet> pet);
+  
 
 private:
   Direction image_direction;

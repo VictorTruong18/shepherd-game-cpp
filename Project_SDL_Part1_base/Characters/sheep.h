@@ -27,6 +27,7 @@ public:
   // implement functions that are purely virtual in base class
 
   void interract(InterractingObject& interractingObject,const SDL_Rect&  interractingObjectPosition, const float& interractingObjectDirectionX, const float& interractingObjectDirectionY) override;
-
+  void move() override; // todo: Animals move around, but in a different
+                       // fashion depending on which type of animal
   void update_status() override;
 };

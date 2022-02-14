@@ -20,8 +20,5 @@ public:
    */
   ~Animal();
 
-
-  void move() override; // todo: Animals move around, but in a different
-                       // fashion depending on which type of animal
   void handle_events(SDL_Event const& event) override;
 };

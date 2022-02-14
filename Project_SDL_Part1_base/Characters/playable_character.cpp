@@ -79,12 +79,3 @@ void PlayableCharacter::move() {
 
 
 void PlayableCharacter::stop() { image_direction = Direction::NONE; }
-
-void PlayableCharacter::addPet(std::unique_ptr<Pet> pet){
-    this->pet = std::move(pet);
-}
-
-void PlayableCharacter::petUpdate() {
-  this->pet->move(this->image_position_);
-  this->pet->draw();
-}

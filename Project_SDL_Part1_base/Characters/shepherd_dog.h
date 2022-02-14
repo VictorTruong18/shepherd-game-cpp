@@ -1,10 +1,10 @@
 #pragma once
-#include "pet.h"
+#include "animal.h"
 
 /**
  * Class ShepherdDog - derived from Animal
  */
-class ShepherdDog : public Pet {
+class ShepherdDog : public Animal {
 public:
   /**
    * Method - contructor
@@ -16,7 +16,10 @@ public:
    */
   ~ShepherdDog();
   // implement functions that are purely virtual in base class
+  SDL_Rect shepherdPosition;
+  float angle;
 
   void interract(InterractingObject& interractingObject,const SDL_Rect&  interractingObjectPosition, const float& interractingObjectDirectionX, const float& interractingObjectDirectionY) override;
   void update_status() override;
+  void move() override; 
 };

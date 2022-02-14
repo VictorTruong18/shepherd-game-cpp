@@ -65,9 +65,9 @@ int application::loop(unsigned period) {
   std::unique_ptr<Shepherd> shepherd =
       std::make_unique<Shepherd>(this->window_surface_ptr_);
   this->playing_ground->add_character(std::move(shepherd));
-  // std::unique_ptr<Pet> shepherdDog =
-  //     std::make_unique<ShepherdDog>(this->window_surface_ptr_);
-
+  std::unique_ptr<ShepherdDog> shepherdDog =
+      std::make_unique<ShepherdDog>(this->window_surface_ptr_);
+  this->playing_ground->add_character(std::move(shepherdDog));
   // shepherd->addPet(std::move(shepherdDog));
     
   while (running && (SDL_GetTicks() - start < period * 1000)) {
