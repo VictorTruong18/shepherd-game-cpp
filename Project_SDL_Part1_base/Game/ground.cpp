@@ -75,6 +75,9 @@ void ground::event_handler(SDL_Event const& event){
       if(a->has_attribute("Shepherd")){
         a->handle_events(event);
       }
+      if(a->has_attribute("Dog")){
+        a->handle_events(event);
+      }
   }
 }
 

@@ -17,11 +17,65 @@ void ShepherdDog::update_status(){
 }
 
 void ShepherdDog::move(){
-  if(this->angle < 360.00){
-    this->angle += 0.05;
-  } else {
-    this->angle = 0;
+  if(!this->has_attribute("Fetch") && !this->has_attribute("Recall")){
+    if(this->angle < 360.00){
+      this->angle += 0.05;
+    } else {
+      this->angle = 0;
+    }
+    this->image_position_.x = shepherdPosition.x + cos(this->angle)*100;
+    this->image_position_.y = shepherdPosition.y + sin(this->angle)*100;
+  } 
+  
+  if(this->has_attribute("Fetch")) {
+    this->image_position_.x = mathOperation::round(this->image_position_.x);
+    this->image_position_.y = mathOperation::round(this->image_position_.y);
+    if(this->image_position_.x < mathOperation::round(this->x)){
+      this->image_position_.x += 10;
+    } else if(this->image_position_.x > mathOperation::round(this->x)) {
+      this->image_position_.x -= 10;
+    }
+    if(this->image_position_.y < mathOperation::round(this->y)){
+      this->image_position_.y += 10;
+    } else if(this->image_position_.y > mathOperation::round(this->y)) {
+      this->image_position_.y -= 10;
+    }
   }
-  this->image_position_.x = shepherdPosition.x + cos(this->angle)*100;
-  this->image_position_.y = shepherdPosition.y + sin(this->angle)*100;
+
+  if(this->has_attribute("Recall")){
+    this->image_position_.x = mathOperation::round(this->image_position_.x);
+    this->image_position_.y = mathOperation::round(this->image_position_.y);
+    if(this->image_position_.x < mathOperation::round(this->shepherdPosition.x )){
+      this->image_position_.x += 10;
+    } else if(this->image_position_.x > mathOperation::round(this->shepherdPosition.x)) {
+      this->image_position_.x -= 10;
+    }
+    if(this->image_position_.y < mathOperation::round(this->shepherdPosition.y)){
+      this->image_position_.y += 10;
+    } else if(this->image_position_.y > mathOperation::round(this->shepherdPosition.y)) {
+      this->image_position_.y -= 10;
+    }
+
+  }
 }
+
+void ShepherdDog::handle_events(SDL_Event const& event){
+  switch (event.button.button) {
+      
+    case SDL_BUTTON_LEFT:
+      int x,y;
+      SDL_GetMouseState(&x,&y);
+      this->x = x;
+      this->y = y;
+      this->add_attribute("Fetch");
+      this->delete_attribute("Recall");
+      break;
+    case SDL_BUTTON_RIGHT:
+      this->x = x;
+      this->y = y;
+      this->add_attribute("Recall");
+      this->delete_attribute("Fetch");
+      break;
+  }
+}
+

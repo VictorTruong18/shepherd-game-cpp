@@ -14,6 +14,10 @@ namespace collision {
 bool isColliding(const SDL_Rect& a, const SDL_Rect& b);
 bool isCollidingWithEyesight(const SDL_Rect& a, const SDL_Rect& b, int eyeSightRange);
 }
+
+namespace mathOperation {
+int round(int n);
+}
 // Defintions
 const double frame_rate = 60.0; // refresh rate
 const double frame_time = 1. / frame_rate;
