@@ -9,15 +9,9 @@ ground::ground(SDL_Surface* window_surface_ptr) {
 
 ground::~ground() {
   // Free the dynamic table array
-  this->animals.clear();
+  this->characters.clear();
   // delete &animals;
 }
-
-void ground::add_animal(std::unique_ptr<Animal> animal) {
-  // Add the type animal to the dynamic array
-  this->animals.push_back(std::move(animal));
-}
-
 
 
 void ground::update() {
@@ -26,15 +20,15 @@ void ground::update() {
                SDL_MapRGB(this->window_surface_ptr_->format, 153, 255, 51));
 
   //Draw the tombstones of the dead
-  for (auto& a : this->animals) {
+  for (auto& a : this->characters) {
     if(a->has_attribute("Dead")){
       a->draw(); 
     }
   }
 
-  for (auto& a : this->animals) {
+  for (auto& a : this->characters) {
     if(a->has_attribute("Alive")){
-      for (auto& b : this->animals) {
+      for (auto& b : this->characters) {
 
         if (a.get() == b.get())
           continue;
@@ -63,7 +57,7 @@ void ground::post_update(){
  
   std::vector<std::unique_ptr<Animal>> newBorns;
   //Add all new animals
-  for (auto& a : this->animals) {
+  for (auto& a : this->characters) {
     if(a->has_attribute("Pregnant")){
         if(a->has_attribute("Sheep")){
          std::unique_ptr<Animal> sheep = std::make_unique<Sheep>(this->window_surface_ptr_);
@@ -76,8 +70,21 @@ void ground::post_update(){
   }
   //Put all the new born
   for(auto& a : newBorns){
-    this->add_animal(std::move(a));
+    this->add_character(std::move(a));
   }
 
 
+}
+
+
+void ground::event_handler(SDL_Event const& event){
+  for (auto& a : this->characters) {
+      if(a->has_attribute("Shepherd")){
+        a->handle_events(event);
+      }
+  }
+}
+
+void ground::add_character(std::unique_ptr<MovingObject> character){
+  this->characters.push_back(std::move(character));
 }

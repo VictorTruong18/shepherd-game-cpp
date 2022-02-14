@@ -12,6 +12,9 @@ Animal::~Animal() {
   // Free the surface that has the texture for animals
 }
 
+void Animal::handle_events(SDL_Event const& event){
+
+}
 
 void Animal::move() {
   if(this->has_attribute("Alive")){

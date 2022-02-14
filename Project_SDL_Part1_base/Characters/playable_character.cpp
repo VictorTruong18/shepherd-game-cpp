@@ -15,8 +15,10 @@ void PlayableCharacter::handle_events(SDL_Event const& event) {
     Uint8 const* keys = SDL_GetKeyboardState(nullptr);
 
     if (keys[SDL_SCANCODE_W] == 1) {
+
       image_direction = Direction::UP;
     } else if (keys[SDL_SCANCODE_S] == 1) {
+ 
       image_direction = Direction::DOWN;
     } else if (keys[SDL_SCANCODE_A] == 1) {
       image_direction = Direction::LEFT;
