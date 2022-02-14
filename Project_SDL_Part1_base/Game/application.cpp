@@ -88,7 +88,6 @@ int application::loop(unsigned period) {
 
     // update the playing ground with the animals
     this->playing_ground->update();
-    // shepherd->petUpdate();
 
     // if (movement_timer <= 25) {
     //   shepherd->move();

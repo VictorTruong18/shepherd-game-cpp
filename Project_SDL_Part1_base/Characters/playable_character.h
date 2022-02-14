@@ -10,7 +10,7 @@ public:
                     SDL_Surface* window_surface_ptr,double speed, std::set<std::string> properties);
   ~PlayableCharacter();
 
-  
+  void update_status() override;
 
   void stop();
   
@@ -18,5 +18,6 @@ public:
 
 protected:
   Direction image_direction;
+  int timeWalking;
 
 };

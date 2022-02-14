@@ -8,9 +8,6 @@ Shepherd::~Shepherd() {}
 
 void Shepherd::interract(InterractingObject& interractingObject,const SDL_Rect&  interractingObjectPosition, const float& interractingObjectDirectionX, const float& interractingObjectDirectionY){}
 
-void Shepherd::update_status() {
-    
-}
 
 void Shepherd::move() {
   int max_height = frame_height - frame_boundary - this->image_ptr_->h;
@@ -65,14 +62,16 @@ void Shepherd::handle_events(SDL_Event const& event) {
     Uint8 const* keys = SDL_GetKeyboardState(nullptr);
 
     if (keys[SDL_SCANCODE_W] == 1) {
-
+      this->timeWalking = 0;
       image_direction = Direction::UP;
     } else if (keys[SDL_SCANCODE_S] == 1) {
- 
+      this->timeWalking = 0;
       image_direction = Direction::DOWN;
     } else if (keys[SDL_SCANCODE_A] == 1) {
+      this->timeWalking = 0;
       image_direction = Direction::LEFT;
     } else if (keys[SDL_SCANCODE_D] == 1) {
+      this->timeWalking = 0;
       image_direction = Direction::RIGHT;
     } else {
       image_direction = Direction::NONE;

@@ -25,7 +25,8 @@ void ground::update() {
       a->draw(); 
     }
   }
-
+  
+  //Draw and handle interractions of all living characters
   for (auto& a : this->characters) {
     if(a->has_attribute("Alive")){
       for (auto& b : this->characters) {
@@ -46,15 +47,6 @@ void ground::update() {
 
 void ground::post_update(){
 
-
-  
-  // this->animals.erase(std::remove_if(this->animals.begin(), this->animals.end(), 
-  //               [](std::unique_ptr<Animal>& a){
-  //                 return a->has_attribute("Dead");
-  //               }),
-  //               this->animals.end());
-
- 
   std::vector<std::unique_ptr<Animal>> newBorns;
   //Add all new animals
   for (auto& a : this->characters) {

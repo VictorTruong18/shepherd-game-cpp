@@ -9,6 +9,6 @@ public:
   ~Shepherd();
     void move() override;
     void interract(InterractingObject& interractingObject,const SDL_Rect&  interractingObjectPosition, const float& interractingObjectDirectionX, const float& interractingObjectDirectionY) override;
-    void update_status() override;
+  
     void handle_events(SDL_Event const& event) override;
 };
