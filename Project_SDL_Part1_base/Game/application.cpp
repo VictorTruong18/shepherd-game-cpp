@@ -45,6 +45,8 @@ application::application(unsigned n_sheep, unsigned n_wolf) {
     this->playing_ground->add_character(std::move(wolf));
   }
 
+  
+
   // Loop to instance all the wolves
 }
 
@@ -60,14 +62,16 @@ application::~application() {
 int application::loop(unsigned period) {
   auto start = SDL_GetTicks();
   bool running = true;
+  this->font = TTF_OpenFont("../font/Arial.ttf", 32);
+  this->blackColor = { 0, 0, 0 };
 
-  int count = 0;
 
   // make a playable character
   std::unique_ptr<Shepherd> shepherd =
       std::make_unique<Shepherd>(this->window_surface_ptr_);
   this->playing_ground->add_character(std::move(shepherd));
 
+  // EASTER EGG
   //  std::unique_ptr<Bearman> bearman =
   //     std::make_unique<Bearman>(this->window_surface_ptr_);
   // this->playing_ground->add_character(std::move(bearman));
@@ -94,14 +98,37 @@ int application::loop(unsigned period) {
 
     // update the playing ground with the animals
     this->playing_ground->update();
-
+    this->setGameScore();
     // update the window
     SDL_UpdateWindowSurface(this->window_ptr_);
 
-    count++;
+
     SDL_Delay(1000 / frame_rate); // Run the game at 60Hz
   }
-
-
+  TTF_CloseFont(this->font);
+  SDL_FreeSurface(this->textSurface);
+  std::string score = std::to_string(this->playing_ground->number_of_sheep) + " Sheeps / " + std::to_string(this->playing_ground->number_of_wolf) + " Wolfs";
+   std::cout << "[Game score]: " << score.c_str() << "\n";
   return 0;
 }
+
+
+qvoid application::setGameScore() {
+
+  
+  this->playing_ground->updateStat();
+
+
+   std::string score = std::to_string(this->playing_ground->number_of_sheep) + " Sheeps / " + std::to_string(this->playing_ground->number_of_wolf) + " Wolfs";
+   this->textSurface = TTF_RenderText_Blended(this->font, score.c_str(), this->blackColor);
+
+   // set text position
+   this->position.x = 10;
+   this->position.y = 10;
+
+   /* Blit of text */
+   SDL_BlitSurface(this->textSurface, NULL, this->window_surface_ptr_, &this->position);
+
+   // update the window
+   SDL_UpdateWindowSurface(this->window_ptr_);
+ }

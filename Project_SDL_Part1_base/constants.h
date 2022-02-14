@@ -8,6 +8,7 @@
 #include <optional>
 #include <vector>
 #include <set>
+#include <SDL_ttf.h>
 
 
 namespace collision {

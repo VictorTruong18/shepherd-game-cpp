@@ -1,12 +1,5 @@
 #pragma once
 
-#include <SDL.h>
-#include <SDL_image.h>
-#include <iostream>
-#include <map>
-#include <memory>
-#include <optional>
-#include <vector>
 
 #include "../Characters/animal.h"
 #include "../Characters/playable_character.h"
@@ -27,6 +20,7 @@ private:
 
   // Some attribute to store all the wolves and sheep
   std::vector<std::unique_ptr<MovingObject>> characters;
+  
 
 
 
@@ -39,4 +33,7 @@ public:
   void post_update(); // another update that will do aditional tasks 
                       // erase all the dead animals, add the new offspring
   void event_handler(SDL_Event const& event); // useful to get keyboard entries 
+  void updateStat();
+  int number_of_sheep;
+  int number_of_wolf;
 };

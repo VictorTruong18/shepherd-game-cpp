@@ -5,6 +5,9 @@ ground::ground(SDL_Surface* window_surface_ptr) {
 
   // InitialiZe the window_surface_ptr_ in the class
   this->window_surface_ptr_ = window_surface_ptr;
+  this->number_of_sheep = 0;
+  this->number_of_wolf = 0;
+  
 }
 
 ground::~ground() {
@@ -85,4 +88,17 @@ void ground::event_handler(SDL_Event const& event){
 
 void ground::add_character(std::unique_ptr<MovingObject> character){
   this->characters.push_back(std::move(character));
+}
+
+void ground::updateStat(){
+  this->number_of_sheep = 0;
+   this->number_of_wolf = 0;
+  for (auto& a : this->characters) {
+    if(a->has_attribute("Sheep") && a->has_attribute("Alive")){
+      this->number_of_sheep++;
+    }
+    if(a->has_attribute("Wolf") && a->has_attribute("Alive")){
+      this->number_of_wolf++;
+    }
+  }
 }

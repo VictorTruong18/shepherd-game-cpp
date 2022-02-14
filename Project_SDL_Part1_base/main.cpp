@@ -13,6 +13,12 @@ void init() {
     throw std::runtime_error("init(): SDL_image could not initialize! "
                              "SDL_image Error: " +
                              std::string(IMG_GetError()));
+
+   // Initialize TTF
+   if (TTF_Init() < 0)
+     throw std::runtime_error("init(): TTF could not initialize! "
+                              "TTF Error: " +
+                              std::string(TTF_GetError()));
 }
 
 int main(int argc, char* argv[]) {
@@ -38,6 +44,8 @@ int main(int argc, char* argv[]) {
 
   std::cout << "Exiting application with code " << retval << std::endl;
   }
+
+  TTF_Quit();
   SDL_Quit();
 
   return 0;
