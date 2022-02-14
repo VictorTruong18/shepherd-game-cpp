@@ -29,3 +29,10 @@ const std::string IMG_SHEEP = "../media/sheep.png";
 const std::string IMG_SHEEP_MALE = "../media/sheep_male.png";
 const std::string IMG_SHEEP_FEMALE = "../media/sheep_female.png";
 const std::string IMG_SHEEP_FEMALE_HORNY = "../media/sheep_female_horny.png";
+const std::string IMG_WOLF_DEAD = "../media/wolf_bones.png";
+const std::string IMG_SHEEP_DEAD = "../media/sheep_tombstone.png";
+
+const int TIME_TO_STARVE_SECONDS_WOLF = 10; // The wolf will go N seconds wihtout eating
+const int TIME_TO_STARVE_WOLF = 20 * TIME_TO_STARVE_SECONDS_WOLF;
+const int TIME_TO_REPRODUCE_COOLDOWN_SECONDS_SHEEP = 10;
+const int TIME_TO_REPRODUCE_COOLDOWN_SHEEP = 20 * TIME_TO_REPRODUCE_COOLDOWN_SECONDS_SHEEP;

@@ -15,5 +15,5 @@ public:
                 std::set<std::string> properties);
   ~MovingObject();
   virtual void move() = 0;
-  
+  virtual void update_status() = 0;  
 };

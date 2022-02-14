@@ -18,16 +18,25 @@ void Sheep::interract(InterractingObject& interractingObject,const SDL_Rect&  in
   //There is a physical collision
   if(collision::isColliding(this->get_position(),interractingObjectPosition)){
     //If the Sheep meets a Predator
-    if(interractingObject.has_attribute("Predator")){
-      this->replace_attribute("Alive","Dead");  
+    if(interractingObject.has_attribute("Predator") && interractingObject.has_attribute("Alive") && this->has_attribute("Alive")){
+      interractingObject.interract(*this, this->get_position());
+      this->replace_attribute("Alive","Dead");
+      this->modify_picture(IMG_SHEEP_DEAD);
     }
     //If the Female Sheep meets a male Sheep
-    if(this->has_attribute("Female") &&  this->has_attribute("Horny") && !this->has_attribute("Offspring") &&
-      (interractingObject.has_attribute("Male") && interractingObject.has_attribute("Sheep"))){
+    if(this->has_attribute("Female") &&  this->has_attribute("Horny") && !this->has_attribute("Offspring") && this->has_attribute("Alive") &&
+      (interractingObject.has_attribute("Male") && interractingObject.has_attribute("Sheep") && interractingObject.has_attribute("Alive"))){
       this->add_attribute("Pregnant"); 
       this->delete_attribute("Horny");
       this->modify_picture(IMG_SHEEP_FEMALE);
     }
     
   }
+}
+
+void Sheep::update_status(){
+  this->image_ptr_->clip_rect.x = 10 ;
+  this->image_ptr_->clip_rect.y = 10 ;
+  this->image_ptr_->clip_rect.w = 10 ;
+  this->image_ptr_->clip_rect.h = 10 ;
 }

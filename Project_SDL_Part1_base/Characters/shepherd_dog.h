@@ -18,4 +18,5 @@ public:
   // implement functions that are purely virtual in base class
 
   void interract(InterractingObject& interractingObject,const SDL_Rect&  interractingObjectPosition) override;
+  void update_status() override;
 };

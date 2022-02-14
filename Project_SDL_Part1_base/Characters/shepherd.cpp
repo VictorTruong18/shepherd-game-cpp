@@ -7,3 +7,7 @@ Shepherd::Shepherd(SDL_Surface* window_surface_ptr_)
 Shepherd::~Shepherd() {}
 
 void Shepherd::interract(InterractingObject& interractingObject,const SDL_Rect&  interractingObjectPosition){}
+
+void Shepherd::update_status() {
+    
+}

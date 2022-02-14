@@ -47,7 +47,7 @@ RenderedObject::~RenderedObject() {
 }
 
 void RenderedObject::draw() {
-  if(this->has_attribute("Alive")){
+ 
     // Put the animal's image surface on the window surface
     SDL_Rect crop, positionFond;
     crop.x = 0;
@@ -57,7 +57,7 @@ void RenderedObject::draw() {
 
     SDL_BlitSurface(this->image_ptr_, &crop, this->window_surface_ptr_,
                     &image_position_);
-  }
+  
 }
 
 SDL_Rect RenderedObject::get_position(){

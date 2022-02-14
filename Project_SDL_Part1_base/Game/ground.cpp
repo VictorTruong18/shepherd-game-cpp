@@ -1,5 +1,6 @@
 #include "ground.h"
 
+
 ground::ground(SDL_Surface* window_surface_ptr) {
 
   // InitialiZe the window_surface_ptr_ in the class
@@ -24,15 +25,25 @@ void ground::update() {
   SDL_FillRect(this->window_surface_ptr_, NULL,
                SDL_MapRGB(this->window_surface_ptr_->format, 153, 255, 51));
 
+  //Draw the tombstones of the dead
   for (auto& a : this->animals) {
-    a->draw();
-    a->move();
-    for (auto& b : this->animals) {
+    if(a->has_attribute("Dead")){
+      a->draw(); 
+    }
+  }
 
-      if (a.get() == b.get())
-        continue;
-        
-      a->interract(*b,b->get_position());
+  for (auto& a : this->animals) {
+    if(a->has_attribute("Alive")){
+      for (auto& b : this->animals) {
+
+        if (a.get() == b.get())
+          continue;
+          
+        a->interract(*b,b->get_position());
+      }
+      a->draw();
+      a->move();
+      a->update_status();
     }
   }
 
@@ -41,6 +52,15 @@ void ground::update() {
 
 void ground::post_update(){
 
+
+  
+  // this->animals.erase(std::remove_if(this->animals.begin(), this->animals.end(), 
+  //               [](std::unique_ptr<Animal>& a){
+  //                 return a->has_attribute("Dead");
+  //               }),
+  //               this->animals.end());
+
+ 
   std::vector<std::unique_ptr<Animal>> newBorns;
   //Add all new animals
   for (auto& a : this->animals) {
@@ -54,9 +74,10 @@ void ground::post_update(){
         }
     }
   }
-
   //Put all the new born
   for(auto& a : newBorns){
     this->add_animal(std::move(a));
   }
+
+
 }

@@ -23,4 +23,5 @@ public:
 
   void move() override; // todo: Animals move around, but in a different
                        // fashion depending on which type of animal
+  
 };

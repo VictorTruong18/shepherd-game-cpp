@@ -8,3 +8,7 @@ ShepherdDog::ShepherdDog(SDL_Surface* window_surface_ptr_)
 ShepherdDog::~ShepherdDog() {}
 
 void ShepherdDog::interract(InterractingObject& interractingObject,const SDL_Rect&  interractingObjectPosition){}
+
+void ShepherdDog::update_status(){
+  
+}
