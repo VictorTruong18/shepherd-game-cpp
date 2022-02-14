@@ -20,7 +20,7 @@ public:
   // implement functions that are purely virtual in base class
   SDL_Rect shepherdPosition;
   float angle;
-
+  int waiting_time;
 
   void interract(InterractingObject& interractingObject,const SDL_Rect&  interractingObjectPosition, const float& interractingObjectDirectionX, const float& interractingObjectDirectionY) override;
   void update_status() override;

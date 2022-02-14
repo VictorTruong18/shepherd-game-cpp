@@ -2,6 +2,7 @@
 
 ShepherdDog::ShepherdDog(SDL_Surface* window_surface_ptr_)
     : Animal("../media/doggo.png", window_surface_ptr_,1,  std::set<std::string> { "Dog", "Alive", "Guard"}) {
+      this->waiting_time = 0;
 } 
 
 ShepherdDog::~ShepherdDog() {}
@@ -10,6 +11,7 @@ void ShepherdDog::interract(InterractingObject& interractingObject,const SDL_Rec
   if(interractingObject.has_attribute("Shepherd")){
     this->shepherdPosition = interractingObjectPosition;
   }
+  
 }
 
 void ShepherdDog::update_status(){
@@ -40,6 +42,16 @@ void ShepherdDog::move(){
     } else if(this->image_position_.y > mathOperation::round(this->y)) {
       this->image_position_.y -= 10;
     }
+    if(this->image_position_.x == mathOperation::round(this->x) && this->image_position_.y == mathOperation::round(this->y)){
+     
+      if(this->waiting_time < DOG_WAITING_TIME){
+         this->waiting_time++; 
+      } else {
+        this->delete_attribute("Fetch");
+        this->add_attribute("Recall");
+        this->waiting_time = 0;
+      }
+    }
   }
 
   if(this->has_attribute("Recall")){
@@ -55,7 +67,10 @@ void ShepherdDog::move(){
     } else if(this->image_position_.y > mathOperation::round(this->shepherdPosition.y)) {
       this->image_position_.y -= 10;
     }
-
+    
+    if(this->image_position_.y == mathOperation::round(this->shepherdPosition.y) && this->image_position_.x == mathOperation::round(this->shepherdPosition.x)){
+      this->delete_attribute("Recall");
+    }
   }
 }
 
