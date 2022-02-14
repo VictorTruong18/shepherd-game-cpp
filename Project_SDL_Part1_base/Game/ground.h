@@ -1,13 +1,6 @@
 #pragma once
 
-#include <SDL.h>
-#include <SDL_image.h>
-#include <iostream>
-#include <map>
-#include <memory>
-#include <optional>
-#include <vector>
-
+#include "../constants.h"
 #include "../Characters/animal.h"
 #include "../Characters/playable_character.h"
 #include "../Characters/sheep.h"
@@ -15,7 +8,6 @@
 #include "../Characters/bearman.h"
 #include "../Characters/shepherd_dog.h"
 #include "../Characters/wolf.h"
-#include "../constants.h"
 #include "../GameObjects/moving_object.h"
 
 // The "ground" on which all the animals live (like the std::vector
