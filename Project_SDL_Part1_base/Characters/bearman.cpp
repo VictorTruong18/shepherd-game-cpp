@@ -1,12 +1,16 @@
 #include "bearman.h"
 
 Bearman::Bearman(SDL_Surface* window_surface_ptr_)
-    : PlayableCharacter(IMG_BEARMAN, window_surface_ptr_,AVERAGE_SPEED_PLAYABLE,std::set<std::string> { "Bearman", "Alive", "Playable", "Predator"}) {}
-
+    : PlayableCharacter(
+          IMG_BEARMAN, window_surface_ptr_, AVERAGE_SPEED_PLAYABLE,
+          std::set<std::string>{"Bearman", "Alive", "Playable", "Predator"}) {}
 
 Bearman::~Bearman() {}
 
-void Bearman::interract(InterractingObject& interractingObject,const SDL_Rect&  interractingObjectPosition, const float& interractingObjectDirectionX, const float& interractingObjectDirectionY){}
+void Bearman::interract(InterractingObject& interractingObject,
+                        const SDL_Rect& interractingObjectPosition,
+                        const float& interractingObjectDirectionX,
+                        const float& interractingObjectDirectionY) {}
 
 void Bearman::handle_events(SDL_Event const& event) {
 

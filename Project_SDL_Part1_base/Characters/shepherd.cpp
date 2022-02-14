@@ -1,13 +1,16 @@
 #include "shepherd.h"
 
 Shepherd::Shepherd(SDL_Surface* window_surface_ptr_)
-    : PlayableCharacter(IMG_SHEPHERD, window_surface_ptr_,AVERAGE_SPEED_PLAYABLE,std::set<std::string> { "Shepherd", "Alive", "Playable"}) {}
-
+    : PlayableCharacter(
+          IMG_SHEPHERD, window_surface_ptr_, AVERAGE_SPEED_PLAYABLE,
+          std::set<std::string>{"Shepherd", "Alive", "Playable"}) {}
 
 Shepherd::~Shepherd() {}
 
-void Shepherd::interract(InterractingObject& interractingObject,const SDL_Rect&  interractingObjectPosition, const float& interractingObjectDirectionX, const float& interractingObjectDirectionY){}
-
+void Shepherd::interract(InterractingObject& interractingObject,
+                         const SDL_Rect& interractingObjectPosition,
+                         const float& interractingObjectDirectionX,
+                         const float& interractingObjectDirectionY) {}
 
 void Shepherd::handle_events(SDL_Event const& event) {
 

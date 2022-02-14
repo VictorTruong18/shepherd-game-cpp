@@ -6,7 +6,8 @@
  */
 class ShepherdDog : public Animal {
 private:
-  int x,y;
+  int x, y;
+
 public:
   /**
    * Method - contructor
@@ -22,9 +23,11 @@ public:
   float angle;
   int waiting_time;
 
-  void interract(InterractingObject& interractingObject,const SDL_Rect&  interractingObjectPosition, const float& interractingObjectDirectionX, const float& interractingObjectDirectionY) override;
+  void interract(InterractingObject& interractingObject,
+                 const SDL_Rect& interractingObjectPosition,
+                 const float& interractingObjectDirectionX,
+                 const float& interractingObjectDirectionY) override;
   void update_status() override;
-  void move() override; 
+  void move() override;
   void handle_events(SDL_Event const& event) override;
-
 };

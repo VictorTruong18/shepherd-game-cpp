@@ -15,9 +15,11 @@ SDL_Surface* load_surface_for(const std::string& path,
 }
 } // namespace game
 
-RenderedObject::RenderedObject(const std::string& file_path,SDL_Surface* window_surface_ptr,std::set<std::string> properties) : 
-    InterractingObject(properties){
-   // InitialiZe the window_surface_ptr_ in the class
+RenderedObject::RenderedObject(const std::string& file_path,
+                               SDL_Surface* window_surface_ptr,
+                               std::set<std::string> properties)
+    : InterractingObject(properties) {
+  // InitialiZe the window_surface_ptr_ in the class
   this->window_surface_ptr_ = window_surface_ptr;
   // Load the texture of the animal
   this->image_ptr_ = game::load_surface_for(file_path, this->image_ptr_);
@@ -38,7 +40,6 @@ RenderedObject::RenderedObject(const std::string& file_path,SDL_Surface* window_
   this->image_position_.w = this->image_ptr_->w;
   // the height of the rectangle will be the same as height of the image
   this->image_position_.h = this->image_ptr_->h;
-  
 }
 
 RenderedObject::~RenderedObject() {
@@ -48,31 +49,27 @@ RenderedObject::~RenderedObject() {
 }
 
 void RenderedObject::draw() {
- 
-    // // Put the animal's image surface on the window surface
-    // SDL_Rect crop, positionFond;
-    // crop.x = 0;
-    // crop.y = 0;
-    // crop.h = this->image_ptr_->h;
-    // crop.w = this->image_ptr_->w;
 
-    SDL_BlitSurface(this->image_ptr_, NULL, this->window_surface_ptr_,
-                    &image_position_);
-  
+  // // Put the animal's image surface on the window surface
+  // SDL_Rect crop, positionFond;
+  // crop.x = 0;
+  // crop.y = 0;
+  // crop.h = this->image_ptr_->h;
+  // crop.w = this->image_ptr_->w;
+
+  SDL_BlitSurface(this->image_ptr_, NULL, this->window_surface_ptr_,
+                  &image_position_);
 }
 
-SDL_Rect RenderedObject::get_position(){
-  return this->image_position_;
-}
+SDL_Rect RenderedObject::get_position() { return this->image_position_; }
 
-void RenderedObject::modify_picture(const std::string& file_path){
+void RenderedObject::modify_picture(const std::string& file_path) {
   // Load the texture of the animal
   this->image_ptr_ = game::load_surface_for(file_path, this->image_ptr_);
   if (!this->image_ptr_)
     throw std::runtime_error("Could not load image");
- 
 }
 
-void RenderedObject::set_position(SDL_Rect position){
+void RenderedObject::set_position(SDL_Rect position) {
   this->image_position_ = position;
 }

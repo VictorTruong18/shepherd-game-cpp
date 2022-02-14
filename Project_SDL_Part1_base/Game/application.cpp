@@ -26,7 +26,7 @@ application::application(unsigned n_sheep, unsigned n_wolf) {
 
   // Instanciation of ground
 
-   std::unique_ptr<ground> playing_ground =
+  std::unique_ptr<ground> playing_ground =
       std::make_unique<ground>(this->window_surface_ptr_);
   this->playing_ground = std::move(playing_ground);
 
@@ -76,7 +76,7 @@ int application::loop(unsigned period) {
       std::make_unique<ShepherdDog>(this->window_surface_ptr_);
   this->playing_ground->add_character(std::move(shepherdDog));
   // shepherd->addPet(std::move(shepherdDog));
-    
+
   while (running && (SDL_GetTicks() - start < period * 1000)) {
 
     while (SDL_PollEvent(&window_event_)) {
@@ -101,7 +101,6 @@ int application::loop(unsigned period) {
     count++;
     SDL_Delay(1000 / frame_rate); // Run the game at 60Hz
   }
-
 
   return 0;
 }

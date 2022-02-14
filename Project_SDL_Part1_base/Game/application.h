@@ -12,7 +12,7 @@ private:
   SDL_Event window_event_;
 
   // Other attributes here, for example an instance of ground
-  
+
   std::unique_ptr<ground> playing_ground;
   int movement_timer;
 

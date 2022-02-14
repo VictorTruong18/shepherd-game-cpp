@@ -6,14 +6,14 @@
 #include <map>
 #include <memory>
 #include <optional>
-#include <vector>
 #include <set>
-
+#include <vector>
 
 namespace collision {
 bool isColliding(const SDL_Rect& a, const SDL_Rect& b);
-bool isCollidingWithEyesight(const SDL_Rect& a, const SDL_Rect& b, int eyeSightRange);
-}
+bool isCollidingWithEyesight(const SDL_Rect& a, const SDL_Rect& b,
+                             int eyeSightRange);
+} // namespace collision
 
 namespace mathOperation {
 int round(int n);
@@ -44,11 +44,12 @@ const std::string IMG_WOLF_STARVING = "../media/wolf_starving.png";
 const std::string IMG_BEARMAN = "../media/bearman.png";
 const std::string IMG_SHEPHERD = "../media/shepherd.png";
 
-
-const int TIME_TO_STARVE_SECONDS_WOLF = 20; // The wolf will go N seconds wihtout eating
+const int TIME_TO_STARVE_SECONDS_WOLF =
+    20; // The wolf will go N seconds wihtout eating
 const int TIME_TO_STARVE_WOLF = 20 * TIME_TO_STARVE_SECONDS_WOLF;
 const int TIME_TO_REPRODUCE_COOLDOWN_SECONDS_SHEEP = 10;
-const int TIME_TO_REPRODUCE_COOLDOWN_SHEEP = 20 * TIME_TO_REPRODUCE_COOLDOWN_SECONDS_SHEEP;
+const int TIME_TO_REPRODUCE_COOLDOWN_SHEEP =
+    20 * TIME_TO_REPRODUCE_COOLDOWN_SECONDS_SHEEP;
 const int TIME_TO_GROW_SECONDS_TO_SHEEP = 10;
 const int TIME_TO_GROW_TO_SHEEP = 20 * TIME_TO_GROW_SECONDS_TO_SHEEP;
 
