@@ -12,6 +12,7 @@
 
 namespace collision {
 bool isColliding(const SDL_Rect& a, const SDL_Rect& b);
+bool isCollidingWithEyesight(const SDL_Rect& a, const SDL_Rect& b, int eyeSightRange);
 }
 // Defintions
 const double frame_rate = 60.0; // refresh rate
@@ -26,6 +27,7 @@ const int arr[2] = {-1, 1}; // Direction initializiation
 const std::string sex[2] = {"Male", "Female"};
 
 const std::string IMG_SHEEP = "../media/sheep.png";
+const std::string IMG_SHEEP_SCARED = "../media/sheep_scared.png";
 const std::string IMG_SHEEP_MALE = "../media/sheep_male.png";
 const std::string IMG_SHEEP_FEMALE = "../media/sheep_female.png";
 const std::string IMG_SHEEP_FEMALE_HORNY = "../media/sheep_female_horny.png";
@@ -38,6 +40,9 @@ const int TIME_TO_STARVE_SECONDS_WOLF = 20; // The wolf will go N seconds wihtou
 const int TIME_TO_STARVE_WOLF = 20 * TIME_TO_STARVE_SECONDS_WOLF;
 const int TIME_TO_REPRODUCE_COOLDOWN_SECONDS_SHEEP = 10;
 const int TIME_TO_REPRODUCE_COOLDOWN_SHEEP = 20 * TIME_TO_REPRODUCE_COOLDOWN_SECONDS_SHEEP;
-
 const int TIME_TO_GROW_SECONDS_TO_SHEEP = 10;
 const int TIME_TO_GROW_TO_SHEEP = 20 * TIME_TO_GROW_SECONDS_TO_SHEEP;
+
+const int EYE_SIGHT_SHEEP = 40;
+const int TIME_BOOST_SECOND_SHEEP = 3;
+const int TIME_BOOST_SHEEP = 20 * TIME_BOOST_SECOND_SHEEP;

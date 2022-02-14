@@ -15,12 +15,12 @@ Sheep::Sheep(SDL_Surface* window_surface_ptr_)
 
 Sheep::~Sheep() {}
 
-void Sheep::interract(InterractingObject& interractingObject,const SDL_Rect&  interractingObjectPosition){
+void Sheep::interract(InterractingObject& interractingObject,const SDL_Rect&  interractingObjectPosition, const float& interractingObjectDirectionX, const float& interractingObjectDirectionY){
   //There is a physical collision
   if(collision::isColliding(this->get_position(),interractingObjectPosition)){
     //If the Sheep meets a Predator
     if(interractingObject.has_attribute("Predator") && interractingObject.has_attribute("Alive") && this->has_attribute("Alive")){
-      interractingObject.interract(*this, this->get_position());
+      interractingObject.interract(*this, this->get_position(), this->get_direction_x(), this->get_direction_y());
       this->replace_attribute("Alive","Dead");
       this->modify_picture(IMG_SHEEP_DEAD);
     }
@@ -32,6 +32,15 @@ void Sheep::interract(InterractingObject& interractingObject,const SDL_Rect&  in
       this->modify_picture(IMG_SHEEP_FEMALE);
     }
     
+  }
+  //There is a visual collision
+  if(collision::isCollidingWithEyesight(this->get_position(),interractingObjectPosition, EYE_SIGHT_SHEEP)){
+    if(interractingObject.has_attribute("Predator") && interractingObject.has_attribute("Alive") && this->has_attribute("Alive")){
+      this->veloxity_x = interractingObjectDirectionX;
+      this->veloxity_y = interractingObjectDirectionY;
+      this->add_attribute("Boost");
+      this->timeBoost = 0;
+    }
   }
 }
 
@@ -65,5 +74,17 @@ void Sheep::update_status(){
   }
   if(this->has_attribute("Alive") && this->has_attribute("Male") && this->has_attribute("Horny") && !(this->has_attribute("Offspring") || this->has_attribute("Lamb"))){
     this->modify_picture(IMG_SHEEP_MALE);
+  }
+
+  if(this->has_attribute("Alive") && this->has_attribute("Boost") && !(this->has_attribute("Offspring") || this->has_attribute("Lamb"))){
+      if(this->timeBoost < TIME_BOOST_SHEEP){
+        this->timeBoost++;
+        this->speed = 5;
+        this->modify_picture(IMG_SHEEP_SCARED);
+      } else {
+        this->delete_attribute("Boost");
+        this->speed = 1;
+      }
+      
   }
 }

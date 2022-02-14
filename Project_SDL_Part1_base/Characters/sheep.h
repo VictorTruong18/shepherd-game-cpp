@@ -11,6 +11,7 @@ class Sheep : public Animal {
 private:
    int timeGrowing;
    int timeCooldownGivingBirth;
+   int timeBoost;
 public:
   /**
    * Method - contructor
@@ -25,7 +26,7 @@ public:
   ~Sheep();
   // implement functions that are purely virtual in base class
 
-  void interract(InterractingObject& interractingObject,const SDL_Rect&  interractingObjectPosition) override;
+  void interract(InterractingObject& interractingObject,const SDL_Rect&  interractingObjectPosition, const float& interractingObjectDirectionX, const float& interractingObjectDirectionY) override;
 
   void update_status() override;
 };

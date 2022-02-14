@@ -16,4 +16,6 @@ public:
   ~MovingObject();
   virtual void move() = 0;
   virtual void update_status() = 0;  
+  float get_direction_x();
+  float get_direction_y();
 };

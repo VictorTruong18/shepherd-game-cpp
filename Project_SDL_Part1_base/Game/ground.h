@@ -15,6 +15,7 @@
 #include "../Characters/shepherd_dog.h"
 #include "../Characters/wolf.h"
 #include "../constants.h"
+#include "../GameObjects/moving_object.h"
 
 // The "ground" on which all the animals live (like the std::vector
 // in the zoo example).
@@ -24,7 +25,7 @@ private:
   SDL_Surface* window_surface_ptr_;
 
   // Some attribute to store all the wolves and sheep
-  std::vector<std::unique_ptr<Animal>> animals;
+  std::vector<std::unique_ptr<MovingObject>> animals;
 
 
 

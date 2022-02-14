@@ -11,3 +11,11 @@ MovingObject::MovingObject(const std::string& file_path,
 }
 
 MovingObject::~MovingObject(){}
+
+float MovingObject::get_direction_x(){
+    return this->veloxity_x;
+}
+
+float MovingObject::get_direction_y(){
+    return this->veloxity_y;
+}

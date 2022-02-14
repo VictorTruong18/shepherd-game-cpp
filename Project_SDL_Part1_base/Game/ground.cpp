@@ -39,7 +39,7 @@ void ground::update() {
         if (a.get() == b.get())
           continue;
           
-        a->interract(*b,b->get_position());
+        a->interract(*b,b->get_position(),b->get_direction_x(), b->get_direction_y());
       }
       a->draw();
       a->move();

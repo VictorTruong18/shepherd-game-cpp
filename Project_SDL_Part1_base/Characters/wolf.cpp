@@ -9,7 +9,7 @@ Wolf::Wolf(SDL_Surface* window_surface_ptr_)
 
 Wolf::~Wolf() {}
 
-void Wolf::interract(InterractingObject& interractingObject,const SDL_Rect&  interractingObjectPosition){
+void Wolf::interract(InterractingObject& interractingObject,const SDL_Rect&  interractingObjectPosition, const float& interractingObjectDirectionX, const float& interractingObjectDirectionY){
  if(collision::isColliding(this->get_position(),interractingObjectPosition)){
    if(interractingObject.has_attribute("Prey") && this->has_attribute("Alive") && interractingObject.has_attribute("Alive")){
       this->withoutEatingTime = 0; //Wolf feeds so his without eating time go back to 0
