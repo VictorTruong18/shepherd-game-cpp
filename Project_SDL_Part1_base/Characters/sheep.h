@@ -1,6 +1,6 @@
 #pragma once
 #include "animal.h"
-
+#include "../constants.h"
 
 
 /**

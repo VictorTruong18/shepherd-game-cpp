@@ -16,5 +16,7 @@ public:
   ~RenderedObject();
   SDL_Rect get_position();
   SDL_Rect get_boxCollision_position();
+  void modify_picture(const std::string& file_path);
+  void set_position(SDL_Rect position);
   void draw();
 };

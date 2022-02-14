@@ -35,4 +35,6 @@ public:
   
   void update(); // todo: "refresh the screen": Move animals and draw them
                  // Possibly other methods, depends on your implementation
+  void post_update(); // another update that will do aditional tasks 
+                      // erase all the dead animals, add the new offspring
 };

@@ -6,12 +6,7 @@
  * Class Animal
  */
 class Animal : public MovingObject{
-private:
-  SDL_Surface* window_surface_ptr_; // ptr to the surface on which we want the
-                                    // animal to be drawn, also non-owning
 
-
-  
 
 public:
   /**
