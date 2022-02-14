@@ -1,6 +1,5 @@
 #pragma once
 #include "../constants.h"
-#include "pet.h"
 #include "../GameObjects/moving_object.h"
 
 class PlayableCharacter : public MovingObject {
@@ -11,14 +10,13 @@ public:
                     SDL_Surface* window_surface_ptr,double speed, std::set<std::string> properties);
   ~PlayableCharacter();
 
-  void handle_events(SDL_Event const& event) override;
-  void move() override;
-  void stop();
   
 
-private:
+  void stop();
+  
+  
+
+protected:
   Direction image_direction;
 
-  double speed = 5;
-  std::unique_ptr<Pet> pet;
 };
