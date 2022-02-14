@@ -10,6 +10,7 @@ Sheep::Sheep(SDL_Surface* window_surface_ptr_)
   if(this->has_attribute("Male")){
     this->modify_picture(IMG_SHEEP_MALE);
   }
+  this->timeGrowing = 0;
 }
 
 Sheep::~Sheep() {}
@@ -35,8 +36,26 @@ void Sheep::interract(InterractingObject& interractingObject,const SDL_Rect&  in
 }
 
 void Sheep::update_status(){
-  this->image_ptr_->clip_rect.x = 10 ;
-  this->image_ptr_->clip_rect.y = 10 ;
-  this->image_ptr_->clip_rect.w = 10 ;
-  this->image_ptr_->clip_rect.h = 10 ;
+ if(this->has_attribute("Offspring") || this->has_attribute("Lamb") ){
+   if(this->has_attribute("Offspring") && this->timeGrowing < TIME_TO_GROW_TO_SHEEP/2){
+     this->modify_picture(IMG_OFFSPRING);
+     this->timeGrowing++;
+   } else {
+     this->replace_attribute("Offspring", "Lamb");
+   }
+   if(this->has_attribute("Lamb") && this->timeGrowing < TIME_TO_GROW_TO_SHEEP){
+     this->modify_picture(IMG_LAMB);
+     this->timeGrowing++;
+   } else {
+     this->delete_attribute("Lamb");
+     
+
+   }
+ }  
+ if(this->has_attribute("Female") && this->has_attribute("Horny") && !(this->has_attribute("Offspring") || this->has_attribute("Lamb"))){
+    this->modify_picture(IMG_SHEEP_FEMALE_HORNY);
+  }
+  if(this->has_attribute("Male") && this->has_attribute("Horny") && !(this->has_attribute("Offspring") || this->has_attribute("Lamb"))){
+    this->modify_picture(IMG_SHEEP_MALE);
+  }
 }
