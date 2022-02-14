@@ -15,6 +15,12 @@ void Wolf::interract(InterractingObject& interractingObject,const SDL_Rect&  int
       this->withoutEatingTime = 0; //Wolf feeds so his without eating time go back to 0
       this->modify_picture(IMG_WOLF);
    }
+
+    if(interractingObject.has_attribute("Bearman") && this->has_attribute("Dead") && interractingObject.has_attribute("Alive")){ 
+      this->withoutEatingTime = 0; //Wolf feeds so his without eating time go back to 0
+      this->modify_picture(IMG_WOLF);
+      this->replace_attribute("Dead", "Alive");
+    }  
  }
   //Clostest prey for the wolf reach
  if(collision::isCollidingWithEyesight(this->get_position(),interractingObjectPosition, EYE_SIGHT_WOLF)){
@@ -43,6 +49,8 @@ void Wolf::interract(InterractingObject& interractingObject,const SDL_Rect&  int
        this->image_position_.y += 20;
      }
    }
+
+   
  }
 }
 
@@ -59,6 +67,7 @@ void Wolf::update_status(){
       this->modify_picture(IMG_WOLF);
     }
   }
+
 }
 
 void Wolf::move() {

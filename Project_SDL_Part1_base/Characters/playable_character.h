@@ -4,6 +4,7 @@
 
 class PlayableCharacter : public MovingObject {
 public:
+  
   enum class Direction { NONE, UP, DOWN, LEFT, RIGHT };
 
   PlayableCharacter(const std::string& file_path,
@@ -11,7 +12,7 @@ public:
   ~PlayableCharacter();
 
   void update_status() override;
-
+  void move() override;
   void stop();
   
   
@@ -19,5 +20,5 @@ public:
 protected:
   Direction image_direction;
   int timeWalking;
-
+  
 };

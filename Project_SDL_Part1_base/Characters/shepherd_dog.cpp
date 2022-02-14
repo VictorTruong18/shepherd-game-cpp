@@ -1,7 +1,7 @@
 #include "shepherd_dog.h"
 
 ShepherdDog::ShepherdDog(SDL_Surface* window_surface_ptr_)
-    : Animal("../media/doggo.png", window_surface_ptr_,1,  std::set<std::string> { "Dog", "Alive", "Guard"}) {
+    : Animal("../media/doggo.png", window_surface_ptr_,1,  std::set<std::string> { "Dog", "Alive", "Guard", "Playable"}) {
       this->waiting_time = 0;
 } 
 

@@ -41,6 +41,9 @@ const std::string IMG_OFFSPRING = "../media/offspring.png";
 const std::string IMG_LAMB = "../media/lamb.png";
 const std::string IMG_WOLF = "../media/wolf.png";
 const std::string IMG_WOLF_STARVING = "../media/wolf_starving.png";
+const std::string IMG_BEARMAN = "../media/bearman.png";
+const std::string IMG_SHEPHERD = "../media/shepherd.png";
+
 
 const int TIME_TO_STARVE_SECONDS_WOLF = 20; // The wolf will go N seconds wihtout eating
 const int TIME_TO_STARVE_WOLF = 20 * TIME_TO_STARVE_SECONDS_WOLF;
@@ -57,3 +60,5 @@ const int TIME_BOOST_SHEEP = 20 * TIME_BOOST_SECOND_SHEEP;
 const int TIME_MOVEMENT_SHEPHERD = 25;
 const int DOG_WAITING_TIME_SECONDS = 2;
 const int DOG_WAITING_TIME = 20 * DOG_WAITING_TIME_SECONDS;
+
+const double AVERAGE_SPEED_PLAYABLE = 5;

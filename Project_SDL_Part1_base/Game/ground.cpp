@@ -25,6 +25,11 @@ void ground::update() {
     if(a->has_attribute("Dead")){
       a->draw(); 
     }
+    //We still leave interactions possible with dead and alive for revival
+    for (auto& b : this->characters) {
+        if (a.get() == b.get())
+          continue;
+        a->interract(*b,b->get_position(),b->get_direction_x(), b->get_direction_y()); }
   }
   
   //Draw and handle interractions of all living characters
@@ -72,10 +77,7 @@ void ground::post_update(){
 
 void ground::event_handler(SDL_Event const& event){
   for (auto& a : this->characters) {
-      if(a->has_attribute("Shepherd")){
-        a->handle_events(event);
-      }
-      if(a->has_attribute("Dog")){
+      if(a->has_attribute("Playable")){
         a->handle_events(event);
       }
   }

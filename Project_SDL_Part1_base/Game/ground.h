@@ -12,6 +12,7 @@
 #include "../Characters/playable_character.h"
 #include "../Characters/sheep.h"
 #include "../Characters/shepherd.h"
+#include "../Characters/bearman.h"
 #include "../Characters/shepherd_dog.h"
 #include "../Characters/wolf.h"
 #include "../constants.h"
