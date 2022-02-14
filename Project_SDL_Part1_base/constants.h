@@ -34,7 +34,7 @@ const std::string IMG_SHEEP_DEAD = "../media/sheep_tombstone.png";
 const std::string IMG_OFFSPRING = "../media/offspring.png";
 const std::string IMG_LAMB = "../media/lamb.png";
 
-const int TIME_TO_STARVE_SECONDS_WOLF = 10; // The wolf will go N seconds wihtout eating
+const int TIME_TO_STARVE_SECONDS_WOLF = 20; // The wolf will go N seconds wihtout eating
 const int TIME_TO_STARVE_WOLF = 20 * TIME_TO_STARVE_SECONDS_WOLF;
 const int TIME_TO_REPRODUCE_COOLDOWN_SECONDS_SHEEP = 10;
 const int TIME_TO_REPRODUCE_COOLDOWN_SHEEP = 20 * TIME_TO_REPRODUCE_COOLDOWN_SECONDS_SHEEP;

@@ -36,7 +36,7 @@ void Sheep::interract(InterractingObject& interractingObject,const SDL_Rect&  in
 }
 
 void Sheep::update_status(){
- if(this->has_attribute("Offspring") || this->has_attribute("Lamb") ){
+ if( this->has_attribute("Alive") && (this->has_attribute("Offspring") || this->has_attribute("Lamb")) ){
    if(this->has_attribute("Offspring") && this->timeGrowing < TIME_TO_GROW_TO_SHEEP/2){
      this->modify_picture(IMG_OFFSPRING);
      this->timeGrowing++;
@@ -52,10 +52,18 @@ void Sheep::update_status(){
 
    }
  }  
- if(this->has_attribute("Female") && this->has_attribute("Horny") && !(this->has_attribute("Offspring") || this->has_attribute("Lamb"))){
+  if(this->has_attribute("Alive") && this->has_attribute("Female") && this->has_attribute("Horny") && !(this->has_attribute("Offspring") || this->has_attribute("Lamb"))){
     this->modify_picture(IMG_SHEEP_FEMALE_HORNY);
   }
-  if(this->has_attribute("Male") && this->has_attribute("Horny") && !(this->has_attribute("Offspring") || this->has_attribute("Lamb"))){
+  if(this->has_attribute("Alive") && this->has_attribute("Female") && !!this->has_attribute("Horny") && !(this->has_attribute("Offspring") || this->has_attribute("Lamb"))){
+     this->timeCooldownGivingBirth++;
+     if(this->timeCooldownGivingBirth < TIME_TO_REPRODUCE_COOLDOWN_SHEEP){
+       this->modify_picture(IMG_SHEEP_FEMALE);
+     } else {
+       this->add_attribute("Horny");
+     }
+  }
+  if(this->has_attribute("Alive") && this->has_attribute("Male") && this->has_attribute("Horny") && !(this->has_attribute("Offspring") || this->has_attribute("Lamb"))){
     this->modify_picture(IMG_SHEEP_MALE);
   }
 }

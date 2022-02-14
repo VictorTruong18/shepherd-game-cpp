@@ -10,6 +10,7 @@ class Sheep : public Animal {
 
 private:
    int timeGrowing;
+   int timeCooldownGivingBirth;
 public:
   /**
    * Method - contructor
