@@ -79,7 +79,7 @@ void Sheep::update_status(){
   if(this->has_attribute("Alive") && this->has_attribute("Boost") && !(this->has_attribute("Offspring") || this->has_attribute("Lamb"))){
       if(this->timeBoost < TIME_BOOST_SHEEP){
         this->timeBoost++;
-        this->speed = 5;
+        this->speed = 3;
         this->modify_picture(IMG_SHEEP_SCARED);
       } else {
         this->delete_attribute("Boost");
