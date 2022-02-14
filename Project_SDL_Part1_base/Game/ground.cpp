@@ -11,6 +11,7 @@ ground::~ground() {
   // Free the dynamic table array
   this->characters.clear();
   // delete &animals;
+  SDL_FreeSurface(this->window_surface_ptr_);
 }
 
 

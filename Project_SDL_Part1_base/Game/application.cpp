@@ -25,8 +25,10 @@ application::application(unsigned n_sheep, unsigned n_wolf) {
                SDL_MapRGB(this->window_surface_ptr_->format, 153, 255, 51));
 
   // Instanciation of ground
-  ground* playing_ground = new ground(this->window_surface_ptr_);
-  this->playing_ground = playing_ground;
+
+   std::unique_ptr<ground> playing_ground =
+      std::make_unique<ground>(this->window_surface_ptr_);
+  this->playing_ground = std::move(playing_ground);
 
   // Loop to instance all the sheeps
   for (int i = 0; i < n_sheep; i++) {
@@ -78,7 +80,6 @@ int application::loop(unsigned period) {
 
       switch (window_event_.type) {
       case SDL_QUIT:
-        free(this->playing_ground);
         running = false;
         break;
       case SDL_WINDOWEVENT:
@@ -96,6 +97,6 @@ int application::loop(unsigned period) {
     SDL_Delay(1000 / frame_rate); // Run the game at 60Hz
   }
 
-  free(this->playing_ground);
+
   return 0;
 }

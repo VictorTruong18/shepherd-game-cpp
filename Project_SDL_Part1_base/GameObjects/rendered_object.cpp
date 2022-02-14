@@ -44,18 +44,19 @@ RenderedObject::RenderedObject(const std::string& file_path,SDL_Surface* window_
 RenderedObject::~RenderedObject() {
   // Free the surface that has the texture for animals
   SDL_FreeSurface(this->image_ptr_);
+  SDL_FreeSurface(this->window_surface_ptr_);
 }
 
 void RenderedObject::draw() {
  
-    // Put the animal's image surface on the window surface
-    SDL_Rect crop, positionFond;
-    crop.x = 0;
-    crop.y = 0;
-    crop.h = this->image_ptr_->h;
-    crop.w = this->image_ptr_->w;
+    // // Put the animal's image surface on the window surface
+    // SDL_Rect crop, positionFond;
+    // crop.x = 0;
+    // crop.y = 0;
+    // crop.h = this->image_ptr_->h;
+    // crop.w = this->image_ptr_->w;
 
-    SDL_BlitSurface(this->image_ptr_, &crop, this->window_surface_ptr_,
+    SDL_BlitSurface(this->image_ptr_, NULL, this->window_surface_ptr_,
                     &image_position_);
   
 }

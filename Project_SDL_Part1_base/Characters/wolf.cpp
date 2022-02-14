@@ -52,7 +52,7 @@ void Wolf::update_status(){
     this->replace_attribute("Alive", "Dead");
     this->modify_picture(IMG_WOLF_DEAD);
   }
-  if(this->withoutEatingTime > TIME_TO_STARVE_WOLF / 2 && this->has_attribute("Alive")){
+  if(this->withoutEatingTime > TIME_TO_STARVE_WOLF * 0.8 && this->has_attribute("Alive")){
     if(this->withoutEatingTime % 3 == 0){
       this->modify_picture(IMG_WOLF_STARVING);
     } else {
