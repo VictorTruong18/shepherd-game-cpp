@@ -182,7 +182,7 @@ std::unique_ptr<Bearman> bearman =
 
 As you can see you can already kill sheeps. That’s because sheeps always die when they are in contact of a predator and we’ve already implemented it.
 
-![Screen Shot 2022-02-14 at 21.14.05.png](Wolf%20And%20Sheep%208d2b97a26f1741c8b42bab4fe4b87af6/Screen_Shot_2022-02-14_at_21.14.05.png)
+
 
 ### Now you can put the revive dead wolf inside the interact function
 
